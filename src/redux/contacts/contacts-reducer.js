@@ -1,16 +1,11 @@
-import { ADD_CONTACT, DELETE_CONTACT } from './contacts-type';
+import { createReducer } from '@reduxjs/toolkit';
 
-const initialStore = [];
+import { addContact, deleteContact } from './contacts-actions';
 
-const contactsReducer = (store = initialStore, action) => {
-  switch (action.type) {
-    case ADD_CONTACT:
-      return [...store, action.payload];
-    case DELETE_CONTACT:
-      return store.filter(item => item.id !== action.payload);
-    default:
-      return store;
-  }
-};
+const contactsReducer = createReducer([], {
+  [addContact]: (store, action) => [...store, action.payload],
+  [deleteContact]: (store, action) =>
+    store.filter(item => item.id !== action.payload),
+});
 
 export default contactsReducer;
