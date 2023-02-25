@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 export const ContactList = ({ removeContact }) => {
   const contacts = useSelector(store => store.contacts);
@@ -35,3 +35,7 @@ export const ContactList = ({ removeContact }) => {
 };
 
 export default ContactList;
+
+ContactList.propTypes = {
+  removeContact: PropTypes.func.isRequired,
+};
